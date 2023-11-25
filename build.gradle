@@ -1,0 +1,51 @@
+plugins {
+    id 'java'
+    id 'war'
+}
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    // Добавьте зависимости для Java Servlet API
+    implementation 'javax.servlet:javax.servlet-api:4.0.1'
+}
+
+test {
+    useJUnitPlatform {
+        reports {
+            junitXml {
+                destination = file("$buildDir/test-results/test")
+            }
+        }
+    }
+}
+
+tasks.withType(JavaCompile) {
+    sourceSets.main.java.srcDirs = ['admin/src/main/java', 'services/src/main/java', 'utils/src/main/java', 'web/src/main/java']
+    classpath = sourceSets.main.compileClasspath
+    destinationDir = file('build/classes/main')
+}
+
+task runTests(type: Test) {
+    dependsOn tasks.compileJava
+}
+
+war {
+    dependsOn runTests
+    archiveFileName = 'web.war'
+    webAppDirName = 'web/src/main/webapp'
+}
+
+jar {
+    dependsOn runTests
+    archiveFileName = 'admin.jar'
+    from sourceSets.main.output
+    manifest {
+        attributes 'Main-Class': 'com.builders.admin.AdminEntryPoint'
+    }
+    from sourceSets.main.runtimeClasspath
+}
+
+tasks.build.dependsOn jar

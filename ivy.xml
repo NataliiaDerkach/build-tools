@@ -1,0 +1,22 @@
+
+<ivy-module version="2.0">
+    <info organisation="com.builders" module="build-tools"/>
+
+    <dependencies>
+        <!-- Зависимости для admin module -->
+        <dependency org="javax.servlet" name="javax.servlet-api" rev="4.0.1" />
+
+        <!-- Зависимости для других модулей, если они есть -->
+    </dependencies>
+
+    <!-- Настройки Ivy -->
+    <configurations>
+        <conf name="default" visibility="public" description="runtime dependencies"/>
+    </configurations>
+
+    <resolvers>
+        <url name="central">
+            <artifact pattern="https://repo.maven.apache.org/maven2/[organisation]/[module]/[revision]/[artifact]-[revision](-[classifier]).[ext]"/>
+        </url>
+    </resolvers>
+</ivy-module>
