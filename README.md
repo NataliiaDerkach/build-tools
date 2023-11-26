@@ -1,39 +1,56 @@
 # build-tools
-Create Ant+Ivy(Potional) , Maven and Gradle build scripts to build the project
+# Create Ant+Ivy(Potional) , Maven and Gradle build scripts to build the project
 
 
-Building and Testing:
+## Building and Testing:
 
 
-Maven:
+### Maven:
+
 To build the project and create artifacts using Maven, follow these steps:
 
 Install Maven if you haven't already.
 Open a terminal and navigate to the project directory.
+
 Run the following command:
+
 mvn clean install
 
 
 
-Gradle
+### Gradle:
+
 To build the project and create artifacts using Gradle, follow these steps:
 
 Open a terminal and navigate to the project directory.
+
 Run the following command (on Unix-like systems):
-./gradlew clean build
+
+### ./gradlew clean build
+
+
+
 On Windows, run:
-gradlew.bat clean build
+
+### gradlew.bat clean build
 
 
 
-Running Tests:
+
+
+## Running Tests:
+
 To run tests separately, use the following commands:
 
 
-Maven
-mvn test
+
+## Maven
+
+### mvn test
 
 
-Gradle
-./gradlew test    # Unix-like systems
-gradlew.bat test  # Windows
+
+## Gradle
+
+### ./gradlew test    # Unix-like systems
+### gradlew.bat test  # Windows
